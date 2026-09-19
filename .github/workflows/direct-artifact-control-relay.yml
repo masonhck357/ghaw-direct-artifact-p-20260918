@@ -1,0 +1,19 @@
+name: GHAW direct artifact relay control
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+
+jobs:
+  relay:
+    if: >-
+      github.event.issue.number == 1 &&
+      github.event.comment.body == 'RUN_GHAW_DIRECT_ARTIFACT_CONTROL_20260918_E2A791C4' &&
+      github.event.comment.user.login == 'masonghbb'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Complete bounded artifact control relay
+        run: echo 'bounded artifact control relay complete'
