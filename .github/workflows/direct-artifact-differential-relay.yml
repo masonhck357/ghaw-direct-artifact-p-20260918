@@ -1,0 +1,19 @@
+name: GHAW direct artifact relay differential
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+
+jobs:
+  relay:
+    if: >-
+      github.event.issue.number == 1 &&
+      github.event.comment.body == 'RUN_GHAW_DIRECT_ARTIFACT_DIFFERENTIAL_20260918_5B8FC0D2' &&
+      github.event.comment.user.login == 'masonghbb'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Complete bounded artifact differential relay
+        run: echo 'bounded artifact differential relay complete'
